@@ -13,14 +13,14 @@
     <title>Movie Quote Quiz!</title>
   </head>
   <body>
-   
-
-<!-- questions box and buttons-->
+   <!-- questions box and buttons-->
     <section class="container">
         <div id="question_container" class="hide">
              <!-- timer div -->
-             <div>Timer: <span id="timer-span">0</span></div>
-             <div id="question">Question</div>
+             <div class="quiz_timer">Timer: <span id="timer-span">0</span></div>
+             
+             <div id="question" class="question">Question</div>
+
              <div id="answer_buttons" class="btn_grid">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
@@ -28,11 +28,11 @@
                 <button class="btn">Answer 4</button>
             </div>
 
-            <div class="controls">
-                <button id="start-btn" class="start_btn btn">Start Timer</button>
-                <button id="next-btn" class="next_btn btn">Next</button>
-              </div>
         </div>
+        <div class="controls">
+            <button id="start-btn" class="start_btn btn">Start Timer</button>
+            <button id="next-btn" class="next_btn btn hide">Next</button>
+          </div>
     </section>
 
     <script src="./index.js"></script>

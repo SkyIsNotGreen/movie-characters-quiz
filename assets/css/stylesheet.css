@@ -2,6 +2,7 @@
     box-sizing: border-box;
     font-family: 'Dosis', sans-serif;
     font-family: 'Radio Canada', sans-serif;
+    font-size: 1.5rem;
 }
 
 :root {
@@ -9,7 +10,7 @@
     --hue-wrong: 0;
     --hue-correct: 145;
   }
-
+/* resets, font size, colouring  */
 body {
     --hue: var(--hue-neutral);
     padding: 0;
@@ -21,31 +22,66 @@ body {
     align-items: center;
     background-color: hsl(var(--hue), 100%, 20%);
 }
-
+/* this will show the body as green when you click the correct answer */
 body.correct {
-    --hue: var(--hue-correct)
+    --hue: var(--hue-correct);
+}
+/* this will show the body as red on wrong answer */
+body.wrong {
+    --hue: var(--hue-wrong);
 }
 
-body.wrong {
-    --hue: var(--hue-wrong)
-}
 .container {
     width: 800px;
     max-width: 80%;
-    background-color: bisque;
+    background-color: #d4b252f1;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
 }
-
+/* I think grids might be my fave thing in CSS, makes it look nice & centered */
 .btn_grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
-    gap: 30px;
     padding: 30px;
-    margin: 30px 0;
+    gap: 30px;
+    margin: 30px;
+}
+/* general button styling */
+.btn {
+    --hue: var(--hue-neutral);
+    background-color: hsl(var(--hue), 100%, 30%);
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 15px;
 }
 
-.btn {
-    font-size: 40px;
+.btn:hover {
+    background-color: #529ff7;
+    color: white;
+}
+/* when you pick an answer, show green(correct) button */
+.btn.correct {
+    --hue: var(--hue-correct);
+}
+/* when you pick the wrong answer, show button as red */
+.btn.wrong {
+    --hue: var(--hue-wrong);
+    color: white;
+}
+
+.start_btn, .next_btn {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide{
+    display: none;
 }
