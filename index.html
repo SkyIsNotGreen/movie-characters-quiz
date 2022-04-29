@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--google font --> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;600&family=Radio+Canada:wght@300;600&display=swap" rel="stylesheet"> 
+    <!--CCS-->
+    <link rel="stylesheet" href="./assets/css/stylesheet.css">
+    <title>Movie Quote Quiz!</title>
+  </head>
+  <body>
+    <!-- timer div -->
+    <div>Timer: <span id="timer-span">0</span></div>
     
-</body>
+<!-- questions box and buttons-->
+    <section class="container">
+        <div id="question_container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer_buttons" class="btn_grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start Timer</button>
+                <button id="next-btn" class="next_btn btn">Next</button>
+              </div>
+        </div>
+    </section>
+
+    <script src="./index.js"></script>
+
+  </body>
 </html>

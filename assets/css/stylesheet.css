@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Radio Canada', sans-serif;
+}
+
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
+  }
