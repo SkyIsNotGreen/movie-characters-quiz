@@ -1,11 +1,11 @@
 //element declarations 
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
-const quitButton = document.getElementById ('quit-btn');
+const scoresButton = document.getElementById ('scores-btn');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
-const highScores = document.getElementById('high_scores_box');
+const highScoresBox = document.getElementById('high_scores_box');
 const timerSpan = document.getElementById('timer-span');
 const scoreSpan = document.getElementById('score-span');
 const scoreForm = document.getElementById("score-submit-form");
@@ -40,8 +40,6 @@ const StartButtonClick = () => {
     if (timer === 0) {
         //if timer is 0 stop timer
       clearInterval(timerId);
-      // and display high score screen
-      quizEnd ()
     }
   };
 
@@ -101,8 +99,8 @@ const selectAnswer = (e) => {
     nextButton.classList.remove('hide');
     // else display high scores and restart btn
   } else {
-    quitButton.classList.remove('hide');
-    quizEnd ()
+    scoresButton.classList.remove('hide');
+
   }
 };
 
@@ -126,8 +124,7 @@ const clearStatusClass = (element) => {
 };
 
 const quizEnd = () => {
-    highScores.classList.remove('hide');
-    startButton.classList.add('hide')
+
 }
 
 const readFromLocalStorage = (key, defaultValue) => {
@@ -226,7 +223,7 @@ const questions = [
   }
 ];
 
-//start, next, quit and submit button listeners and functionality
+//start, next, score and submit button listeners and functionality
 startButton.addEventListener('click', StartButtonClick);
 
 nextButton.addEventListener('click', () => {
@@ -234,8 +231,11 @@ nextButton.addEventListener('click', () => {
     setNextQuestion()
   });
 
-quitButton.addEventListener('click', () => {
-    window.location.reload(); //reload the current window
+scoresButton.addEventListener('click', () => {
+  questionContainerElement.classList.add('hide')
+  startButton.classList.add('hide')
+  highScoresBox.classList.remove('hide');
+  
 });
 
 scoreForm.addEventListener('submit', handleFormSubmission);

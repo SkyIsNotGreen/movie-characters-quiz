@@ -94,7 +94,7 @@ body.wrong {
     color: white;
 }
 
-.start_btn, .next_btn, .quit_btn {
+.start_btn, .next_btn, .scores_btn {
     font-size: 2rem;
     font-weight: 600;
     margin: 20px;
