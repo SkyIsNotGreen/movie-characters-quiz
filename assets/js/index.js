@@ -127,6 +127,7 @@ const clearStatusClass = (element) => {
 
 const quizEnd = () => {
     highScores.classList.remove('hide');
+    startButton.classList.add('hide')
 }
 
 const readFromLocalStorage = (key, defaultValue) => {
