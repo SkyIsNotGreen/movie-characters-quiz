@@ -17,7 +17,12 @@
     <section class="container">
         <div id="question-container" class="hide">
              <!-- timer div -->
-             <div class="quiz_timer">Timer: <span class="quiz_timer" id="timer-span">0</span></div>
+             <div class="timer_score_box">
+               Timer: 
+               <span class="timer" id="timer-span">0</span>
+               Score:
+               <span class="score" id="score-span">0</span>
+              </div>
 
              <div id="question" class="question">Question</div>
 
@@ -30,16 +35,28 @@
           </div>
 
           <div class="controls">
-            <button id="start-btn" class="start_btn btn">Start Quiz</button>
+            <button id="start-btn" class="start_btn btn hide">Start Quiz</button>
             <button id="next-btn" class="next_btn btn hide">Next</button>
             <button id="quit-btn" class="quit_btn btn hide">Quit Quiz</button>
           </div>
 
           <div class="high_scores_box">
-            <div class="complete_text">You've completed the Quiz!</div>
-            <div class="score">
-
+            <div class="quiz_end">You've completed the Quiz!</div>
+            <div class="high_scores" id="high-scores">
+              <h1 id="finalScore">High Scores</h1>
+              <ul id="highScoresList"></ul>
             </div>
+
+            <div class="score_submit">
+              <form id="score-submit-form">
+                <input type="text" id="name-input" placeholder="Name" />
+                Score:
+               <span class="score" id="score-span">0</span>
+                <button class="submit_btn" type="submit">Submit</button>
+              </form>
+            </div>
+
+
           </div>
 
 

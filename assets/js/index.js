@@ -5,11 +5,16 @@ const quitButton = document.getElementById ('quit-btn');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
+const highScores = document.getElementById('high_scores_box');
 const timerSpan = document.getElementById('timer-span');
+const scoreSpan = document.getElementById('score-span');
+const scoreForm = document.getElementById("score-submit-form");
+const highScoresList = document.getElementById("highScoresList");
 
 //timer and question shuffler functionality
 let timer = 31;
-let shuffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestionIndex;
+let userScore = 0;
 
 //start game
 const StartButtonClick = () => {
@@ -36,11 +41,14 @@ const StartButtonClick = () => {
         //if timer is 0 stop timer
       clearInterval(timerId);
       // and display high score screen
+      quizEnd ()
     }
   };
 
   const timerId = setInterval(updateTimerValue, 1000);
 };
+
+
 
 const setNextQuestion = () => {
     // clear page for next question
@@ -61,6 +69,7 @@ const showQuestion = (question) => {
       // if answer is correct, show as correct
       if (answer.correct) {
         button.dataset.correct = answer.correct
+
       }
 
       button.addEventListener('click', selectAnswer)
@@ -93,6 +102,7 @@ const selectAnswer = (e) => {
     // else display high scores and restart btn
   } else {
     quitButton.classList.remove('hide');
+    quizEnd ()
   }
 };
 
@@ -102,6 +112,8 @@ const setStatusClass = (element, correct) => {
     //if answer is correct/wrong, add correct/wrong classes
   if (correct) {
     element.classList.add('correct')
+    userScore += 100;
+    scoreSpan.textContent = userScore
   } else {
     element.classList.add('wrong')
   }
@@ -112,6 +124,67 @@ const clearStatusClass = (element) => {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 };
+
+const quizEnd = () => {
+    highScores.classList.remove('hide');
+}
+
+const readFromLocalStorage = (key, defaultValue) => {
+    // get from LS using key name
+    const dataFromLS = localStorage.getItem(key);
+  
+    // parse data from LS
+    const parsedData = JSON.parse(dataFromLS);
+  
+    if (parsedData) {
+      return parsedData;
+    } else {
+      return defaultValue;
+    }
+  };
+
+const writeToLocalStorage = (key, value) => {
+    // convert value to string
+    const stringifiedValue = JSON.stringify(value);
+  
+    // set stringified value to LS for key name
+    localStorage.setItem(key, stringifiedValue);
+  };
+  
+  const handleFormSubmission = (event) => {
+    event.preventDefault();
+  
+    // get name
+    const name = document.getElementById('name-input').value;
+  
+    // get score
+    const score = document.getElementById('score-span').value;
+  
+    // create an object with name and score
+    const highScore = {
+      name: name,
+      score: score,
+    };
+  
+    const highScores = readFromLocalStorage('highScores', []);
+  
+    highScores.push(highScore);
+  
+    writeToLocalStorage('highScores', highScores);
+  };
+
+  const handleOnLoad = () => {
+    // read scores from LS
+    const highScoresList = document.getElementById("highScoresList");
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    
+    highScoresList.innerHTML = highScores
+      .map(score => {
+        return `<li class="high-score">${score.name} - ${score.score}</li>`;
+      })
+      .join("");
+};
+
 
 const questions = [
     {
@@ -152,7 +225,7 @@ const questions = [
   }
 ];
 
-//start, next and quit button listeners and functionality
+//start, next, quit and submit button listeners and functionality
 startButton.addEventListener('click', StartButtonClick);
 
 nextButton.addEventListener('click', () => {
@@ -164,3 +237,4 @@ quitButton.addEventListener('click', () => {
     window.location.reload(); //reload the current window
 });
 
+scoreForm.addEventListener('submit', handleFormSubmission);
