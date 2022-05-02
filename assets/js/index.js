@@ -114,7 +114,7 @@ const clearStatusClass = (element) => {
 
 const questions = [
     {
-    question: 'Who said this? YOU SHALL NOT PASS!!',
+    question: '\nWho said this? \nYOU SHALL NOT PASS!!',
     answers: [
       { text: 'Gandalf', correct: true },
       { text: 'Dumbledore', correct: false },
@@ -123,7 +123,7 @@ const questions = [
     ]
   },
   {
-    question: 'You talkin to me??',
+    question: '\nYou talkin to me??',
     answers: [
       { text: 'No!!', correct: true },
       { text: 'Yes?', correct: true },
@@ -132,7 +132,7 @@ const questions = [
     ]
   },
   {
-    question: 'Which hand did Luke lose in The Last Jedi?',
+    question: '\nWhich hand did Luke lose in The Last Jedi?',
     answers: [
       { text: 'Left', correct: false },
       { text: 'Right', correct: true },
@@ -141,7 +141,7 @@ const questions = [
     ]
   },
   {
-    question: 'Who is the coolest Joker?',
+    question: '\nWho is the coolest Joker?',
     answers: [
       { text: 'Jared Leto', correct: false },
       { text: 'Heath Ledger', correct: true },

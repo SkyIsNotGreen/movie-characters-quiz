@@ -34,11 +34,22 @@ body.wrong {
 .container {
     width: 800px;
     max-width: 80%;
-    background-color: #d4b252f1;
+    background-color: #f7e7bdf1;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
 }
+
+.question {
+    text-align: center;
+}
+
+.quiz_timer {
+    text-align: right;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 /* I think grids might be my fave thing in CSS, makes it look nice & centered */
 .btn_grid {
     display: grid;
