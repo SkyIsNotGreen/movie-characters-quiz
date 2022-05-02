@@ -1,10 +1,11 @@
 //element declarations 
-const startButton = document.getElementById("start-btn");
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
-const timerSpan = document.getElementById("timer-span");
+const startButton = document.getElementById('start-btn');
+const nextButton = document.getElementById('next-btn');
+const quitButton = document.getElementById ('quit-btn');
+const questionContainerElement = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const timerSpan = document.getElementById('timer-span');
 
 //timer and question shuffler functionality
 let timer = 31;
@@ -24,6 +25,7 @@ const StartButtonClick = () => {
 
 //start timer
   const updateTimerValue = () => {
+
     // increment timer by -1
     timer -= 1;
 
@@ -45,7 +47,7 @@ const setNextQuestion = () => {
     resetState()
     // and get the next question
   showQuestion(shuffledQuestions[currentQuestionIndex])
-}
+};
 
 
 const showQuestion = (question) => {
@@ -64,10 +66,10 @@ const showQuestion = (question) => {
       button.addEventListener('click', selectAnswer)
       answerButtonsElement.appendChild(button)
     })
-}
+};
 
 const resetState = () => {
-    //reset page
+    //reset page for next Q
     clearStatusClass(document.body)
     //hide next btn
     nextButton.classList.add('hide')
@@ -75,10 +77,10 @@ const resetState = () => {
     while (answerButtonsElement.firstChild) {
       answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
-}
+};
 
 const selectAnswer = (e) => {
-    //is the answer correct? Check to make sure
+    //is the answer correct? Check dataset to see
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
@@ -87,13 +89,12 @@ const selectAnswer = (e) => {
   })
   //if there are more questions, reveal next btn
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
-    // else display highscores and restart btn
+    nextButton.classList.remove('hide');
+    // else display high scores and restart btn
   } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove('hide')
+    quitButton.classList.remove('hide');
   }
-}
+};
 
 const setStatusClass = (element, correct) => {
     //clear any previous statuses
@@ -104,17 +105,17 @@ const setStatusClass = (element, correct) => {
   } else {
     element.classList.add('wrong')
   }
-}
+};
 
 const clearStatusClass = (element) => {
     //clear any previous statuses
     element.classList.remove('correct')
     element.classList.remove('wrong')
-}
+};
 
 const questions = [
     {
-    question: '\nWho said this? \nYOU SHALL NOT PASS!!',
+    question: '\nWho said this? \n"YOU SHALL NOT PASS!!"',
     answers: [
       { text: 'Gandalf', correct: true },
       { text: 'Dumbledore', correct: false },
@@ -151,10 +152,15 @@ const questions = [
   }
 ];
 
-//start and next button listeners and functionality
-startButton.addEventListener("click", StartButtonClick);
+//start, next and quit button listeners and functionality
+startButton.addEventListener('click', StartButtonClick);
 
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
-  })
+  });
+
+quitButton.addEventListener('click', () => {
+    window.location.reload(); //reload the current window
+});
+
