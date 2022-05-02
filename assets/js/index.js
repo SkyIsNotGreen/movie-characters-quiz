@@ -7,7 +7,7 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const timerSpan = document.getElementById("timer-span");
 
 //timer and question shuffler functionality
-let timer = 51;
+let timer = 31;
 let shuffledQuestions, currentQuestionIndex
 
 //start game
@@ -30,9 +30,8 @@ const StartButtonClick = () => {
     // set text to new timer value
     timerSpan.textContent = timer;
 
-    // check if timer is equal to 0
     if (timer === 0) {
-        //if it is, stop game
+        //if timer is 0 stop timer
       clearInterval(timerId);
       // and display high score screen
     }
@@ -159,7 +158,3 @@ nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
   })
-
-document.getElementsByClassName("wrong").addEventListener("click", () => {
-  timer -= 5;
-});
